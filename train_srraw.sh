@@ -3,7 +3,7 @@
 echo "Start to train the model...."
 
 name="srrawjoint_try"
-dataroot="/Data/dataset/SRRAW"
+dataroot="./SRRAW"
 
 build_dir="./ckpt/"$name
 

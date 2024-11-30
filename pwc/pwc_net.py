@@ -230,12 +230,9 @@ class PWCNET(torch.nn.Module):
 
 		self.netRefiner = Refiner()
 
-		pickle.load = partial(pickle.load, encoding="latin1")
-		pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
-
 		self.load_state_dict({ strKey.replace('module', 'net'): tenWeight for strKey, tenWeight 
 							   in torch.load('./ckpt/pwc-net.pth', map_location=lambda storage, 
-							   loc: storage, pickle_module=pickle).items() })
+							   loc: storage, pickle_module=pickle, encoding="latin1").items() })
 
 	def forward(self, tenFirst, tenSecond):
 		tenFirst = self.netExtractor(tenFirst)
